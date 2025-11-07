@@ -23,15 +23,44 @@
             background-color: var(--cream);
             color: var(--dark-burgundy);
             line-height: 1.6;
+            position: relative;
         }
 
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(125,46,46,0.02) 35px, rgba(125,46,46,0.02) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(230,169,61,0.02) 35px, rgba(230,169,61,0.02) 70px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
         nav {
-            background-color: var(--burgundy);
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark-burgundy) 100%);
             padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         nav ul {
@@ -47,84 +76,221 @@
             color: var(--cream);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
             position: relative;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
 
         nav a:hover {
             color: var(--gold);
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
 
         nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
             width: 0;
             height: 2px;
             background-color: var(--gold);
-            transition: width 0.3s;
+            transition: all 0.3s;
+            transform: translateX(-50%);
         }
 
         nav a:hover::after {
-            width: 100%;
+            width: 80%;
         }
 
         section {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         section h2 {
             color: var(--burgundy);
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
             position: relative;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         section h2::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--gold);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
             margin: 1rem auto;
+            animation: glow 2s ease-in-out infinite;
         }
 
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Content */
         .about-content {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
             align-items: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
         .about-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.9;
         }
 
         .about-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: #333;
         }
 
         .about-image {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .about-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* Meet the Board Section */
+        .board-section {
+            margin-top: 4rem;
+        }
+
+        .board-section h2 {
+            margin-bottom: 3rem;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .board-member {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .board-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(230,169,61,0.2);
+        }
+
+        .board-member-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--cream), var(--gold));
+        }
+
+        .board-member-info {
+            padding: 1.5rem;
+        }
+
+        .board-member-name {
+            color: var(--burgundy);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.3px;
+        }
+
+        .board-member-title {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .board-member-bio {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Mission/Vision Cards */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card, .vision-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 12px 40px rgba(230,169,61,0.2);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            color: var(--burgundy);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .mission-card p, .vision-card p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         footer {
-            background-color: var(--burgundy);
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark-burgundy) 100%);
             color: var(--cream);
             text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
+            padding: 2.5rem 1rem;
+            margin-top: 4rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
         }
 
         /* Tablet and Desktop */
@@ -143,21 +309,52 @@
             }
 
             section h2 {
-                font-size: 2.5rem;
+                font-size: 3rem;
                 margin-bottom: 2rem;
             }
 
             .about-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
+                padding: 3rem;
             }
 
             .about-text {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
             }
 
             .about-image {
-                height: 300px;
+                height: 350px;
+            }
+
+            .board-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .board-member-image {
+                height: 200px;
+            }
+
+            .board-member-info {
+                padding: 1.5rem;
+            }
+
+            .board-member-name {
+                font-size: 1.3rem;
+            }
+
+            .board-member-title {
+                font-size: 0.95rem;
+            }
+
+            .board-member-bio {
+                font-size: 0.95rem;
+            }
+
+            .mission-vision {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
             }
         }
 
@@ -173,11 +370,11 @@
 
             nav a {
                 font-size: 0.85rem;
-                padding: 0.4rem;
+                padding: 0.4rem 0.6rem;
             }
 
             section h2 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
 
             .about-text {
@@ -185,7 +382,23 @@
             }
 
             .about-image {
-                height: 200px;
+                height: 250px;
+            }
+
+            .board-member-name {
+                font-size: 1.5rem;
+            }
+
+            .board-member-title {
+                font-size: 1.1rem;
+            }
+
+            .board-member-info {
+                padding: 1.5rem;
+            }
+
+            .mission-card, .vision-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -201,7 +414,7 @@
         </ul>
     </nav>
 
-    <section>
+    <section class="fade-in">
         <h2>About Us</h2>
         <div class="about-content">
             <div class="about-text">
@@ -212,8 +425,149 @@
         </div>
     </section>
 
+    <section class="fade-in mission-vision">
+        <div class="mission-card">
+            <h3>🎯 Our Mission</h3>
+            <p>To empower Tigray youth through education, mentorship, and community engagement, fostering leadership and cultural pride for a brighter future.</p>
+        </div>
+        <div class="vision-card">
+            <h3>👁️ Our Vision</h3>
+            <p>A thriving community where every young person has the opportunity to reach their full potential and contribute meaningfully to society.</p>
+        </div>
+    </section>
+
+    <section class="board-section">
+        <h2 class="fade-in">Meet the Board</h2>
+        
+        <div class="board-grid">
+            <!-- Board Member 1 -->
+            <div class="board-member fade-in">
+                <img src="images/meron.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Meron Y.</h3>
+                    <div class="board-member-title">Co-Founder</div>
+                    <p class="board-member-bio">Meron Y. Info/ Bio Here</p>
+                </div>
+            </div>
+
+            <!-- Board Member 2 -->
+            <div class="board-member fade-in">
+                <img src="images/betty.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Betty H.</h3>
+                    <div class="board-member-title">Co-Founder</div>
+                    <p class="board-member-bio">Betty.h info/bio</p>
+                </div>
+            </div>
+
+            <!-- Board Member 3 -->
+            <div class="board-member fade-in">
+                <img src="images/atranos.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Atranos T.</h3>
+                    <div class="board-member-title">Co-Founder</div>
+                    <p class="board-member-bio">Atranos T. Information/Bio</p>
+                </div>
+            </div>
+           
+             <!-- Board Member 4 -->
+            <div class="board-member fade-in">
+                <img src="images/aman.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Aman F.</h3>
+                    <div class="board-member-title">Content & Media Manager</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+            <!-- Board Member 5-->
+            <div class="board-member fade-in">
+                <img src="images/ephrata.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Ephrata H.</h3>
+                    <div class="board-member-title">Treasurer</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+            <!-- Board Member 6-->
+            <div class="board-member fade-in">
+                <img src="images/arsema.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Arsema S.</h3>
+                    <div class="board-member-title">Secretary</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+            <!-- Board Member 7 -->
+            <div class="board-member fade-in">
+                <img src="images/sador.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Sador G.</h3>
+                    <div class="board-member-title">Events Coordinator</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+            <!-- Board Member 8-->
+            <div class="board-member fade-in">
+                <img src="images/rimmon.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Rimmon A.</h3>
+                    <div class="board-member-title">Events Coordinator</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+            <!-- Board Member 9-->
+            <div class="board-member fade-in">
+                <img src="images/halet.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Halet G.</h3>
+                    <div class="board-member-title">Events Coordinator</div>
+                    <p class="board-member-bio">Info</p>
+                </div>
+            </div>
+
+
+            <!-- Add more board members by copying the structure above -->
+            <!-- Board Member Template:
+            <div class="board-member fade-in">
+                <img src="images/your-image.jpg" alt="Board Member Name" class="board-member-image">
+                <div class="board-member-info">
+                    <h3 class="board-member-name">Full Name</h3>
+                    <div class="board-member-title">Position/Title</div>
+                    <p class="board-member-bio">Biography and description goes here...</p>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 Tigray Youth Connect. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
