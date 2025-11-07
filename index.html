@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Tigray Youth Connect</title>
+    <title>Tigray Youth Connect - Home</title>
     <style>
         * {
             margin: 0;
@@ -25,6 +25,7 @@
             line-height: 1.6;
         }
 
+        /* Navigation */
         nav {
             background-color: var(--burgundy);
             padding: 1rem;
@@ -72,6 +73,37 @@
             width: 100%;
         }
 
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark-burgundy) 100%);
+            color: var(--cream);
+        }
+
+        .logo-container {
+            max-width: 200px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Sections */
         section {
             max-width: 1200px;
             margin: 2rem auto;
@@ -95,30 +127,95 @@
             margin: 1rem auto;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
+        /* Welcome Section */
+        .welcome-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .about-text {
-            font-size: 1.05rem;
+        .welcome-content p {
+            font-size: 1.1rem;
             line-height: 1.8;
-        }
-
-        .about-text p {
             margin-bottom: 1rem;
         }
 
-        .about-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
+        .cta-btn {
+            background-color: var(--gold);
+            color: var(--dark-burgundy);
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--burgundy);
+            color: var(--cream);
+            transform: scale(1.05);
+        }
+
+        .cta-btn.secondary {
+            background-color: var(--burgundy);
+            color: var(--cream);
+        }
+
+        .cta-btn.secondary:hover {
+            background-color: var(--dark-burgundy);
+        }
+
+        /* Featured Section */
+        .featured {
+            background-color: white;
+            padding: 2rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .featured h3 {
+            color: var(--burgundy);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .featured-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .featured-card h4 {
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .featured-card p {
+            font-size: 1rem;
+        }
+
+        /* Footer */
         footer {
             background-color: var(--burgundy);
             color: var(--cream);
@@ -127,7 +224,7 @@
             margin-top: 3rem;
         }
 
-        /* Tablet and Desktop */
+        /* Responsive Breakpoints */
         @media (min-width: 769px) {
             nav ul {
                 gap: 3rem;
@@ -135,6 +232,23 @@
 
             nav a {
                 font-size: 1.1rem;
+            }
+
+            .hero {
+                padding: 4rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .logo-container {
+                max-width: 300px;
+                margin-bottom: 2rem;
             }
 
             section {
@@ -147,21 +261,34 @@
                 margin-bottom: 2rem;
             }
 
-            .about-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
+            .welcome-content p {
+                font-size: 1.2rem;
             }
 
-            .about-text {
+            .cta-buttons {
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .cta-btn {
+                padding: 1rem 2.5rem;
                 font-size: 1.1rem;
             }
 
-            .about-image {
-                height: 300px;
+            .featured {
+                padding: 3rem;
+            }
+
+            .featured h3 {
+                font-size: 2rem;
+            }
+
+            .featured-grid {
+                gap: 2rem;
+                margin-top: 2rem;
             }
         }
 
-        /* Mobile Small */
         @media (max-width: 480px) {
             nav {
                 padding: 0.75rem 0.5rem;
@@ -176,21 +303,35 @@
                 padding: 0.4rem;
             }
 
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
             section h2 {
                 font-size: 1.75rem;
             }
 
-            .about-text {
+            .welcome-content p {
                 font-size: 1rem;
             }
 
-            .about-image {
-                height: 200px;
+            .cta-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -201,17 +342,48 @@
         </ul>
     </nav>
 
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Tigray Youth Connect Logo">
+        </div>
+        <h1>Tigray Youth Connect</h1>
+        <p>Empowering youth, building community, creating change</p>
+    </div>
+
+    <!-- Welcome Section -->
     <section>
-        <h2>About Us</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Tigray Youth Connect is dedicated to empowering young people in the Tigray community through education, mentorship, and community engagement. We believe in the power of youth to create positive change and build a brighter future.</p>
-                <p>Our organization provides resources, support, and opportunities for young people to develop their skills, connect with their heritage, and make meaningful contributions to their communities.</p>
+        <h2>Welcome to TYC</h2>
+        <div class="welcome-content">
+            <p>Tigray Youth Connect is a vibrant community dedicated to empowering young people through education, mentorship, and meaningful engagement.</p>
+            <p>We believe in the power of youth to create positive change and build a brighter future for our community.</p>
+            
+            <div class="cta-buttons">
+                <a href="volunteer.html" class="cta-btn">Get Involved</a>
+                <a href="about.html" class="cta-btn secondary">Learn More</a>
             </div>
-            <img src="images/community.jpg" alt="Tigray Youth Community" class="about-image">
+        </div>
+
+        <div class="featured">
+            <h3>What We Offer</h3>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <h4>📚 Education</h4>
+                    <p>Workshops, tutoring, and skill-building opportunities</p>
+                </div>
+                <div class="featured-card">
+                    <h4>🤝 Mentorship</h4>
+                    <p>Connect with experienced leaders in your field</p>
+                </div>
+                <div class="featured-card">
+                    <h4>🎉 Community Events</h4>
+                    <p>Cultural celebrations and networking opportunities</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Tigray Youth Connect. All rights reserved.</p>
     </footer>
