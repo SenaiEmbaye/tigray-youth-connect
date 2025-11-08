@@ -35,6 +35,51 @@
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             animation: slideDown 0.5s ease-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .instagram-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.05);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .instagram-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .instagram-link:hover .instagram-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .instagram-text {
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
         }
 
         @keyframes slideDown {
@@ -189,7 +234,7 @@
         .shape {
             position: absolute;
             opacity: 0.15;
-            animation: float 20s infinite;
+            animation: float 15s infinite ease-in-out;
             color: var(--gold);
             font-size: 4rem;
             font-weight: bold;
@@ -205,34 +250,92 @@
             top: 70%;
             right: 10%;
             font-size: 3rem;
-            animation-delay: 3s;
+            animation-delay: 2s;
         }
 
         .shape:nth-child(3) {
             top: 40%;
             left: 80%;
             font-size: 5rem;
-            animation-delay: 6s;
+            animation-delay: 4s;
         }
 
         .shape:nth-child(4) {
             top: 20%;
             right: 25%;
             font-size: 3.5rem;
-            animation-delay: 9s;
+            animation-delay: 6s;
         }
 
         .shape:nth-child(5) {
             bottom: 15%;
             left: 30%;
             font-size: 4.5rem;
-            animation-delay: 12s;
+            animation-delay: 8s;
+        }
+
+        .shape:nth-child(6) {
+            top: 60%;
+            left: 15%;
+            font-size: 3.8rem;
+            animation-delay: 1s;
+        }
+
+        .shape:nth-child(7) {
+            top: 35%;
+            right: 40%;
+            font-size: 4.2rem;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(8) {
+            bottom: 25%;
+            right: 15%;
+            font-size: 3.3rem;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(9) {
+            top: 15%;
+            left: 45%;
+            font-size: 4.8rem;
+            animation-delay: 7s;
+        }
+
+        .shape:nth-child(10) {
+            bottom: 40%;
+            left: 5%;
+            font-size: 3.6rem;
+            animation-delay: 9s;
+        }
+
+        .shape:nth-child(11) {
+            top: 50%;
+            right: 5%;
+            font-size: 4.4rem;
+            animation-delay: 10s;
+        }
+
+        .shape:nth-child(12) {
+            bottom: 10%;
+            right: 35%;
+            font-size: 3.9rem;
+            animation-delay: 11s;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(30px) rotate(240deg); }
+            0%, 100% { 
+                transform: translateY(0) translateX(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-40px) translateX(20px) rotate(90deg); 
+            }
+            50% { 
+                transform: translateY(-20px) translateX(-25px) rotate(180deg); 
+            }
+            75% { 
+                transform: translateY(40px) translateX(15px) rotate(270deg); 
+            }
         }
 
         /* Sections with fade-in on scroll */
@@ -551,19 +654,34 @@
                 width: 100%;
                 max-width: 280px;
             }
+
+            .instagram-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .instagram-text {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <a href="https://www.instagram.com/tigrayyouthconnect/" target="_blank" class="instagram-link">
+            <img src="images/instagam-icon.jpg" alt="Instagram" class="instagram-icon">
+            <span class="instagram-text">Follow us on<br>Instagram!</span>
+        </a>
     </nav>
 
     <!-- Hero Section -->
@@ -574,6 +692,13 @@
             <div class="shape">ራ</div>
             <div class="shape">ይ</div>
             <div class="shape">ሰ</div>
+            <div class="shape">ለ</div>
+            <div class="shape">ም</div>
+            <div class="shape">ን</div>
+            <div class="shape">ባ</div>
+            <div class="shape">ሕ</div>
+            <div class="shape">ዝ</div>
+            <div class="shape">ወ</div>
         </div>
         <div class="hero-content">
             <div class="logo-container">
